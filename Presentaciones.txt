@@ -6,3 +6,7 @@ Mi rol es Analista
 
 Hola, soy Jhon Sebastian Zuñiga.
 Mi rol es Administrador de Base de Datos
+
+Hola, soy Malka Irina Avendaño Camacho
+Soy de Santa Marta y vivo en Bogotá
+Mi rol es Desarrolladora
