@@ -1,4 +1,4 @@
-const {SchemaComposer, SchemaComposer} = require("graphql-compose");
+const {SchemaComposer} = require("graphql-compose");
 
 const schemaComposer = new SchemaComposer();
 
