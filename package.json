@@ -4,7 +4,8 @@
   "description": "Hola, soy Luis Del castillo \r Hola, soy Anlly Cataño\r Hola, soy Malka Avendaño\r Hola soy Carlos Reinel\r Hola, soy Jhon Sebastian Zuñiga",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
   },
   "repository": {
     "type": "git",
