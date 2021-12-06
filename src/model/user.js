@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { composeWirhMongoose } = require("graphql-compose-mongoose");
+const { composeWithMongoose } = require("graphql-compose-mongoose");
 const Schema = mongoose.Schema;
 
 const User = new Schema(
@@ -16,5 +16,5 @@ const User = new Schema(
 
 module.exports = {
     UserShema: mongoose.model("users", User),
-    UserTC: composeWirhMongoose(mongoose.model("users", User))
+    UserTC: composeWithMongoose(mongoose.model("users", User))
 }

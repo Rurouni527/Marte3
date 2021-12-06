@@ -12,3 +12,8 @@ const UserMutation = {
     userUpdateOne: UserTC.getResolver("updateOne"),
     userRemoveById: UserTC.getResolver("removeById")
 }
+
+module.exports={
+    UserQuery,
+    UserMutation
+}
