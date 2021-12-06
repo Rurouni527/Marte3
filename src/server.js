@@ -13,7 +13,7 @@ app.use(logger);
 
 app.listen(5000, async () => {
     console.log("server is running ", 5000);
-    await mongoose.connect("mongodb://localhost:27017/GraphQlTest", {
+    await mongoose.connect("mongodb://marte3:<password>@cluster0.jc5s6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
