@@ -16,7 +16,7 @@ const extensions = ({ context }) => {
 
 app.listen(5000, async () => {
     console.log("server is running ", 5000);
-    await mongoose.connect("mongodb+srv://carlos:12345@cluster0.l38cv.mongodb.net/prueba2?retryWrites=true&w=majority", {
+    await mongoose.connect("mongodb+srv://marte3:12345@cluster0.jc5s6.mongodb.net/Administrar_proyectos?retryWrites=true&w=majority", {
 
         useNewUrlParser: true,
         useUnifiedTopology: true,
