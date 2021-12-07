@@ -4,12 +4,16 @@ const schemaComposer = new SchemaComposer();
 
 const {UserQuery, UserMutation} = require("./user");
 
+const {AdvanceQuery, AdvanceMutation} = require("./advance")
+
 schemaComposer.Query.addFields({
-    ...UserQuery
+    ...UserQuery,
+    ...AdvanceQuery
 });
 
 schemaComposer.Mutation.addFields({
-    ...UserMutation
+    ...UserMutation,
+    ...AdvanceMutation
 });
 
 module.exports = schemaComposer.buildSchema();
