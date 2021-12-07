@@ -1,0 +1,31 @@
+{
+  "name": "marte3",
+  "version": "1.0.0",
+  "description": "Hola, soy Luis Del castillo \r Hola, soy Anlly Cataño\r Hola, soy Malka Avendaño\r Hola soy Carlos Reinel\r Hola, soy Jhon Sebastian Zuñiga",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rurouni527/Marte3.git"
+  },
+  "author": "Grupo Marte3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rurouni527/Marte3/issues"
+  },
+  "homepage": "https://github.com/Rurouni527/Marte3#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "express-winston": "^4.0.5",
+    "graphql": "^15.3.0",
+    "graphql-compose": "^7.22.1",
+    "graphql-compose-mongoose": "^9.0.0",
+    "mongoose": "^5.10.9",
+    "winston": "^3.3.3",
+    "winston-mongodb": "^5.0.5"
+  }
+}
