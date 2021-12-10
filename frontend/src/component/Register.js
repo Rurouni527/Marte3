@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_USER } from "../graphql/Mutation";
 import { GET_USER } from "../graphql/Query";

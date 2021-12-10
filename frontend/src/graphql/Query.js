@@ -10,4 +10,13 @@ export const GET_USER = gql`
   }
 `;
 
+export const GET_USERS_PENING = gql`
+query($filter:FilterFindManyusersInput){
+  userMany(filter:$filter){
+    _id
+    fullName
+    userType
+    state
+  }
+}`
 

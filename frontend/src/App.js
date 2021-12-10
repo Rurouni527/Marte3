@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Register from './component/Register'
 import Navbar from "./component/Navbar";
+import UsersManage from './component/UsersManage'
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Route path="/" element={<Authentication />} />
         <Route path="/login" element={<Authentication />} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/usersManage" element={<UsersManage/>} />
+        <Route path="/update/:id" element={<Register/>} />
       </Routes>
     </Router>
       <ToastContainer />
