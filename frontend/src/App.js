@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Register from './component/Register'
 import Navbar from "./component/Navbar";
 import UsersManage from './component/UsersManage'
+import Home from './component/Home'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
     <Navbar/>
       <Routes>
         <Route path="/" element={<Authentication />} />
-        <Route path="/login" element={<Authentication />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register/>} />
         <Route path="/usersManage" element={<UsersManage/>} />
         <Route path="/update/:id" element={<Register/>} />

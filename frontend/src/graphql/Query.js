@@ -4,7 +4,9 @@ export const GET_USER = gql`
   query ($filter: FilterFindOneusersInput) {
     userOne(filter: $filter) {
       _id
+      email
       userType
+      fullName
       state
     }
   }
