@@ -3,10 +3,15 @@ import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_USER } from "../graphql/Mutation";
 import { GET_USER } from "../graphql/Query";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import { toast } from "react-toastify";
+import Cookies from 'universal-cookie'
 
 export default function Register() {
+  const cookies = new Cookies()
+
+  const params = useParams();
+
   const initialState = {
     email: "",
     id: "",
@@ -67,13 +72,13 @@ export default function Register() {
     }
   };
 
-//   useEffect(() => {
-//      const getUser = () =>{
-//         GetUser();
-//      }
-     
-//   }, [])
+  useEffect(() => {
+    if(!cookies.get("_id")){
+     Navigate("/")
+    }
+   }, [])
 
+ 
   return (
     <>
       <div className="container p-2">
@@ -147,9 +152,24 @@ export default function Register() {
                 <option value={"leader"}>Leader</option>
               </select>
 
-              <div className="mt-5">
+              
+              {
+                params.id ? (
+                  <div className="mt-5">
+                  <button className="btn btn-primary">Update</button>
+                  </div>
+                ):(
+                  <div className="mt-5">
+                  <button onClick={() =>{Navigate("/")}} className="btn btn-primary me-5">Behind</button>
                 <button className="btn btn-primary">Register</button>
-              </div>
+                {
+                  console.log(params.id)
+                }
+                </div>
+                )
+              }
+             
+             
             </form>
           </div>
         </div>

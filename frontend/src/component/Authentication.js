@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { useQuery } from "@apollo/client";
 import {GET_USER} from "../graphql/Query";
+import Cookies from 'universal-cookie'
 import {toast} from 'react-toastify'
 
-export const DataUser = {
-  id: "",
-  userType: ""
-}
 
 export default function Authentication() {
+
+  const Navigate = useNavigate();
+  const cookies = new Cookies();
+
   const [authentication, setAuthentication] = useState({
     email: "",
     password: "",
@@ -31,21 +32,25 @@ export default function Authentication() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const dataUser = data.userOne
 
-    if(data.userOne){
-      if(data.userOne.state === "pendiente"){
+    if(dataUser){
+      if(dataUser.state === "pendiente"){
         toast("Usuario a espera de aprobacion")
-        console.log(data.userOne.state);
         
-      }else if(data.userOne.state === "noautorizado"){
+      }else if(dataUser.state === "no autorizado"){
         toast("Usuario no autorizado")
       }else{
 
-        toast("usuario correcto")
-        DataUser.id = data.userOne._id;
-        DataUser.userType = data.userOne.userType;
+        cookies.set("_id", dataUser._id, {path:"/"});
+        cookies.set("email", dataUser.email, {path:"/"});
+        cookies.set("state", dataUser.state, {path:"/"});
+        cookies.set("userType", dataUser.userType, {path:"/"})
+        cookies.set("fullName", dataUser.fullName, {path:"/"})
 
-        console.log(DataUser)
+        toast(`Bienvenido ${dataUser.fullName}`)
+
+        Navigate("/home")
       }
       
     }else {
@@ -53,8 +58,15 @@ export default function Authentication() {
     }
   };
 
+  useEffect(() => {
+   if(cookies.get("email")){
+    Navigate("/home")
+   }
+  }, [])
+
   return (
     <div className="container " style={{ height: " 500px" }}>
+    <h2>Bienvenido a tu administrador de proyectos Marte3</h2>
       <div className="row" style={{ height: " 500px" }}>
         <div className="col-md-6 mx-auto p-5">
           <div className="card bg-secondary">
@@ -89,7 +101,7 @@ export default function Authentication() {
                   />
                 </div>
                 <div className="d-flex justify-content-between p-2">
-                  <button className="btn btn-primary">Sign in</button>
+                  <button className="btn btn-primary" >Sign in</button>
                   <Link className="btn btn-primary" to="/register">
                     Register
                   </Link>
