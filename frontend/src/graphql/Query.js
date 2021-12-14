@@ -21,4 +21,22 @@ query($filter:FilterFindManyusersInput){
     state
   }
 }`
+export const GET_PROJECTS=gql`{
+  projectAll{
+    _id
+    name
+    startDate
+    endDate
+    
+    
+    
+  }
+}`
+export const GET_PROJECT=gql`
+  query ($_id: MongoID!) {
+    projectById(_id: $_id) {
+      idStudent
+    }
+  }
+`
 
