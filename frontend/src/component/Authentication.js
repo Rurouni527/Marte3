@@ -44,7 +44,6 @@ export default function Authentication() {
 
         cookies.set("_id", dataUser._id, {path:"/"});
         cookies.set("email", dataUser.email, {path:"/"});
-        cookies.set("state", dataUser.state, {path:"/"});
         cookies.set("userType", dataUser.userType, {path:"/"})
         cookies.set("fullName", dataUser.fullName, {path:"/"})
 

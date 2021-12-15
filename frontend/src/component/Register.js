@@ -1,16 +1,14 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_USER } from "../graphql/Mutation";
 import { GET_USER } from "../graphql/Query";
-import {useNavigate, useParams} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Cookies from 'universal-cookie'
+import Cookies from "universal-cookie";
 
 export default function Register() {
-  const cookies = new Cookies()
-
-  const params = useParams();
+  const cookies = new Cookies();
 
   const initialState = {
     email: "",
@@ -38,47 +36,39 @@ export default function Register() {
     },
   });
 
-  const {data} = useQuery(GET_USER, {
+  const { data } = useQuery(GET_USER, {
     variables: {
-        filter: {
-          OR: [{email:`${user.email}` }, {identificacion: `${user.id}`}]
-        },
+      filter: {
+        OR: [{ email: `${user.email}` }, { identificacion: `${user.id}` }],
+      },
     },
-  })
+  });
 
   const handleInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
-     e.preventDefault();
+    e.preventDefault();
 
     //realiza la mutacion
-    const crear = async () => {
+    const create = async () => {
       await createUser();
     };
 
-    if(data.userOne){
-        console.log(data.userOne)
-        toast("Usuario existente");
-    }else{
-        try {
-            crear();
-            toast("El usuario se activara en 24 horas");
-            Navigate("/login")
-          } catch (error) {
-            toast("El usuario no se pudo crear");
-          }
+    if (data.userOne) {
+      toast("Usuario existente");
+    } else {
+      try {
+        create();
+        toast("El usuario se activara en 24 horas");
+        Navigate("/login");
+      } catch (error) {
+        toast("El usuario no se pudo crear");
+      }
     }
   };
 
-  useEffect(() => {
-    if(!cookies.get("_id")){
-     Navigate("/")
-    }
-   }, [])
-
- 
   return (
     <>
       <div className="container p-2">
@@ -86,7 +76,6 @@ export default function Register() {
           <div className="col-md-5 mx-auto p-5">
             <form onSubmit={handleSubmit}>
               <label className="mt-2">Email</label>
-
               <div>
                 <input
                   className="col-md-12"
@@ -98,9 +87,7 @@ export default function Register() {
                   required
                 />
               </div>
-
               <label className="mt-2">ID</label>
-
               <div>
                 <input
                   className="col-md-12"
@@ -111,9 +98,7 @@ export default function Register() {
                   required
                 />
               </div>
-
               <label className="mt-2">Name</label>
-
               <div>
                 <input
                   className="col-md-12"
@@ -124,9 +109,7 @@ export default function Register() {
                   required
                 />
               </div>
-
               <label className="mt-2">Password</label>
-
               <div>
                 <input
                   className="col-md-12"
@@ -137,9 +120,7 @@ export default function Register() {
                   required
                 />
               </div>
-
-              <label className="mt-2">Type User</label>
-
+              <label className="mt-2">Type User</label>,
               <select
                 name="typeUser"
                 className="form-select"
@@ -151,25 +132,18 @@ export default function Register() {
                 <option value={"administrator"}>Administrator</option>
                 <option value={"leader"}>Leader</option>
               </select>
-
-              
-              {
-                params.id ? (
-                  <div className="mt-5">
-                  <button className="btn btn-primary">Update</button>
-                  </div>
-                ):(
-                  <div className="mt-5">
-                  <button onClick={() =>{Navigate("/")}} className="btn btn-primary me-5">Behind</button>
+              ,
+              <div className="mt-5">
+                <button
+                  onClick={() => {
+                    Navigate("/");
+                  }}
+                  className="btn btn-primary me-5"
+                >
+                  Behind
+                </button>
                 <button className="btn btn-primary">Register</button>
-                {
-                  console.log(params.id)
-                }
-                </div>
-                )
-              }
-             
-             
+              </div>
             </form>
           </div>
         </div>

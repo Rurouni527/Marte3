@@ -6,8 +6,10 @@ import Register from './component/Register'
 import Navbar from "./component/Navbar";
 import UsersManage from './component/UsersManage'
 import Home from './component/Home'
+
 import ListProject from "./component/ListProject";
 import DataProject from "./component/DataProject";
+
 
 function App() {
   return (
@@ -20,12 +22,9 @@ function App() {
         <Route path="/register" element={<Register/>} />
         <Route path="/listProject" element={<ListProject/>} />
         <Route path="/usersManage" element={<UsersManage/>} />
+
         <Route path="/update/:id" element={<Register/>} />
         <Route path="/dataProject/:id" element={<DataProject/>} />
-
-
-        
-
       </Routes>
     </Router>
       <ToastContainer />
