@@ -5,9 +5,10 @@ export const GET_USER = gql`
     userOne(filter: $filter) {
       _id
       email
+      identificacion
       userType
       fullName
-      state
+      password
     }
   }
 `;

@@ -10,7 +10,6 @@ export default function Navbar() {
   const cerrarSesion = () => {
     cookies.remove("_id", { path: "/" });
     cookies.remove("email", { path: "/" });
-    cookies.remove("state", { path: "/" });
     cookies.remove("fullName", { path: "/" });
     cookies.remove("userType", { path: "/" })
 
@@ -35,10 +34,8 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
               <Link className="nav-link" to="#">Ver Proyectos</Link>
-              {/* <Navigate> hola </Navigate> */}
-              {/* <Link className="nav-link"  onClick={udtate} >Actualizar Datos</Link> */}
-              <h6 onClick={() => {Navigate(`/update/${cookies.get("_id")}`)}}>Update Data</h6>
-              <Link className="nav-link disabled" to="#" tabIndex={-1} aria-disabled="true">Disabled</Link>
+              <Link className='nav-link' to="/updateUser">Update User</Link>
+              <Link className="nav-link" to="/ProgressProject">crear proyecto</Link>
               <Link className="navbar-brand" to="/" onClick={cerrarSesion}>Salir</Link>
             </div>
           </div>

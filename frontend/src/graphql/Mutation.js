@@ -14,6 +14,23 @@ mutation($record:CreateOneusersInput!){
     userUpdateById(_id:$_id, record:$record){
       record{
         email
+        fullName
       }
     }
   }`
+
+  export const CREATE_PROJECT = gql`
+  mutation($record:CreateOneprojectsInput!){
+    projectCreateOne(record:$record){
+      record{
+        name
+      }
+    }
+  }` 
+
+ export const CREATE_PROGRESS = gql`
+ mutation($record:CreateOneAdvanceInput!){
+  advanceCreateOne(record:$record) {
+    record{idProject}
+  }
+}`
