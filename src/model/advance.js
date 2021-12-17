@@ -4,11 +4,10 @@ const Schema = mongoose.Schema;
 
 const Advance = new Schema(
     {
-        idProyecto: String,
-        idEstudiante: String,
-        fecha: Date,
-        descripcion: String,
-        observaciones: String
+        idProject: String,
+        idStudent: String,
+        description: String,
+        observations: String
     },
     {timestamps: {createdAt:true, updatedAt:true}}
 )

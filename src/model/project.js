@@ -6,11 +6,12 @@ const Schema = mongoose.Schema;
 const Project = new Schema(
     {
         name:String,
-        generalObjectives:[String],
-        specificObjectives:[String],
+        generalObjectives:String,
+        specificObjectives:String,
         butget: String,
-        startDate: Date,
-        endDate:Date,
+        startDate: String,
+        endDate:String,
+        idStudent: String,
         leader: {
             id:String,
         },
