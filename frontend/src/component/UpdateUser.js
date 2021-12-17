@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {useQuery, useMutation, useLazyQuery} from '@apollo/client'
+import {useQuery, useMutation} from '@apollo/client'
 import {GET_USER} from '../graphql/Query'
 import {UPDATE_USER} from '../graphql/Mutation'
 import {toast} from 'react-toastify'
@@ -8,6 +8,8 @@ import Cookies from 'universal-cookie'
 export default function UpdateUser() {
 
     const cookies =  new Cookies();
+
+    const [update, setUpdate] = useQuery();
 
     const initialState = {
         email: "",
@@ -18,15 +20,32 @@ export default function UpdateUser() {
 
     const [dataUser, setDataUser] = useState(initialState)
 
-    const {data, loading} = useQuery(GET_USER, {
-        variables:{
-            filter: {
-                _id: `${cookies.get("_id")}`
-            }
-        }
-    })
 
-    if(loading) return "loading..."
+
+    
+    // // setDataUser(data)
+
+    // const {data, loading} = useQuery(GET_USER, {
+    //     variables:{
+    //         filter: {
+    //             _id: `${cookies.get("_id")}`
+    //         }
+    //     }
+    // })
+
+    // if(loading) return "loading..."
+
+
+    // const dataU = data.userOne;
+
+   
+
+    
+      // data.userOne.map((project) =>{
+      //   setDataUser(project)
+      // })
+  
+      
 
       // const [updateUser, {data:dataUpdate}] = useMutation(UPDATE_USER, {
       //     variables:{

@@ -5,20 +5,32 @@ import {GET_PROJECT} from "../graphql/Query"
 import Cookies from "universal-cookie";
 
 function DataProject() {
+
     const cookies=new Cookies()
+
     const params=useParams()
-    let userRegistered=false
+
     const {data, loading}=useQuery (GET_PROJECT, {
-        variables:{_id:`${params.id}`
-      }
-    })
-    if (loading) return "loading"
-    console.log(data.projectById.idStudent)
-    if (data.projectById.idStudent) { 
-        if(data.projectById.idStudent===cookies.get("_id")){
-            userRegistered=true
-        }
+      variables:{_id:`${params.id}`
     }
+  })
+
+    let userRegistered=false
+
+    console.log(params.id)
+
+    if (loading) return "loading"
+
+    console.log(data)
+
+    // console.log(data.projectById)
+
+    // console.log(data.projectById.idStudent)
+    // if (data.projectById.idStudent) { 
+    //     if(data.projectById.idStudent===cookies.get("_id")){
+    //         userRegistered=true
+    //     }
+    // }
   return (
     <>
       <div className="container p-2">

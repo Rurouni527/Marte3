@@ -4,15 +4,18 @@ import Flatpickr from "react-flatpickr";
 import { CREATE_PROJECT } from "../graphql/Mutation";
 import Cookies from "universal-cookie";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function () {
   const cookies = new Cookies();
+  const Navigate = useNavigate();
   
   const initialState = {
     name: "",
     generalObjectives: "",
     specificObjectives: "",
     butget: "",
+    idStudent: "",
     leader: {
       id: `${cookies.get("_id")}`,
     },
@@ -37,6 +40,7 @@ export default function () {
         butget: `${projetc.butget}`,
         startDate: `${startDate.startDate}`,
         endDate: `${endDate.endDate}`,
+        idStudent: "",
         leader: {
           id: `${projetc.leader.id}`,
         },
@@ -66,6 +70,7 @@ export default function () {
     try {
       create();
       toast("Proyecto creado correctamente");
+      Navigate("/listProject")
     } catch (error) {
       console.log(error);
       toast("El proyecto no se pudo crear");
@@ -150,7 +155,7 @@ export default function () {
               </div>
 
               <div className="mt-5">
-                <button className="btn btn-primary me-5">Crear</button>
+                <button className="btn btn-primary me-5">Create</button>
               </div>
             </form>
           </div>

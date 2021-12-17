@@ -1,10 +1,8 @@
 import React from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Cookies from 'universal-cookie'
 
 export default function Navbar() {
-
-  const Navigate = useNavigate();
 
   const cookies = new Cookies();
   const cerrarSesion = () => {
@@ -14,11 +12,6 @@ export default function Navbar() {
     cookies.remove("userType", { path: "/" })
 
   }
-
-  const udtate = () =>{
-    Navigate(`/update/${cookies.get("_id")}`)
-  }
-  
 
   return (
     <div className='p-2'>
@@ -34,10 +27,8 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
 
-              <Link className="nav-link" to="/listProject">Ver Proyectos</Link>
-              {/* <Navigate> hola </Navigate> */}
-              {/* <Link className="nav-link"  onClick={udtate} >Actualizar Datos</Link> */}
-              <h6 onClick={() => {Navigate(`/update/${cookies.get("_id")}`)}}>Update Data</h6>
+              <Link className="nav-link" to="/listProject">See Project</Link>
+              <Link className="nav-link" to="/updateUser">Update data</Link>
               <Link className="nav-link disabled" to="#" tabIndex={-1} aria-disabled="true">Disabled</Link>
 
               <Link className="navbar-brand" to="/" onClick={cerrarSesion}>Salir</Link>

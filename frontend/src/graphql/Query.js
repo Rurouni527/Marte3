@@ -36,7 +36,8 @@ export const GET_PROJECTS=gql`{
 export const GET_PROJECT=gql`
   query ($_id: MongoID!) {
     projectById(_id: $_id) {
-      idStudent
+     
+      phase
     }
   }
 `

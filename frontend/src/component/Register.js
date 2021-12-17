@@ -62,7 +62,7 @@ export default function Register() {
       try {
         create();
         toast("El usuario se activara en 24 horas");
-        Navigate("/login");
+        Navigate("/");
       } catch (error) {
         toast("El usuario no se pudo crear");
       }
@@ -120,7 +120,7 @@ export default function Register() {
                   required
                 />
               </div>
-              <label className="mt-2">Type User</label>,
+              <label className="mt-2">Type User</label>
               <select
                 name="typeUser"
                 className="form-select"
@@ -132,7 +132,6 @@ export default function Register() {
                 <option value={"administrator"}>Administrator</option>
                 <option value={"leader"}>Leader</option>
               </select>
-              ,
               <div className="mt-5">
                 <button
                   onClick={() => {
@@ -142,7 +141,9 @@ export default function Register() {
                 >
                   Behind
                 </button>
-                <button className="btn btn-primary">Register</button>
+                <button className="btn btn-primary">
+                  Register
+                </button>
               </div>
             </form>
           </div>
