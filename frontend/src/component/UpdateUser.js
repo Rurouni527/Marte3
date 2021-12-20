@@ -1,51 +1,40 @@
-import React, { useState, useEffect } from 'react'
-import {useQuery, useMutation} from '@apollo/client'
+import React, {useEffect} from 'react'
+import {useQuery} from '@apollo/client'
 import {GET_USER} from '../graphql/Query'
 import {UPDATE_USER} from '../graphql/Mutation'
-import {toast} from 'react-toastify'
 import Cookies from 'universal-cookie'
+import { useNavigate } from "react-router-dom";
 
 export default function UpdateUser() {
 
     const cookies =  new Cookies();
 
-    const [update, setUpdate] = useQuery();
+    const Navigate = useNavigate();
 
-    const initialState = {
-        email: "",
-        identificacion: "",
-        fullName: "",
-        password: ""
-      };
+    // const [update, setUpdate] = useQuery();
 
-    const [dataUser, setDataUser] = useState(initialState)
+    // const initialState = {
+    //     email: "",
+    //     identificacion: "",
+    //     fullName: "",
+    //     password: ""
+    //   };
 
+    const {data, loading} = useQuery(GET_USER, {
+        variables:{
+            filter: {
+                _id: `${cookies.get("_id")}`
+            }
+        }
+    })
 
-
-    
-    // // setDataUser(data)
-
-    // const {data, loading} = useQuery(GET_USER, {
-    //     variables:{
-    //         filter: {
-    //             _id: `${cookies.get("_id")}`
-    //         }
-    //     }
-    // })
-
-    // if(loading) return "loading..."
-
-
-    // const dataU = data.userOne;
-
-   
-
-    
-      // data.userOne.map((project) =>{
-      //   setDataUser(project)
-      // })
+    useEffect(() => {
+      if(!cookies.get("_id")){
+        Navigate("/")
+       }
+    }, [])
   
-      
+    if(loading) return "loading..."
 
       // const [updateUser, {data:dataUpdate}] = useMutation(UPDATE_USER, {
       //     variables:{
@@ -60,7 +49,7 @@ export default function UpdateUser() {
       // })
 
     const handleInputChange = (e) =>{
-        setDataUser({...dataUser, [e.target.name]: e.target.value})
+        // setDataUser({...dataUser, [e.target.name]: e.target.value})
     }
 
     const handleSubmit = (e) => {

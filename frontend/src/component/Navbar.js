@@ -29,7 +29,6 @@ export default function Navbar() {
 
               <Link className="nav-link" to="/listProject">See Project</Link>
               <Link className="nav-link" to="/updateUser">Update data</Link>
-              <Link className="nav-link disabled" to="#" tabIndex={-1} aria-disabled="true">Disabled</Link>
 
               <Link className="navbar-brand" to="/" onClick={cerrarSesion}>Salir</Link>
             </div>
